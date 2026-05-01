@@ -27,6 +27,10 @@ jobs:
           ### Coverity Connect users - Uncomment below
           coverity_local: true
           coverity_install_directory: ${{ vars.COVERITY_TOOL_HOME }}
+
+          # override nonstandard project/stream names - otherwise repo name is default
+          coverity_project_name: swright-hello-java
+          coverity_stream_name: swright-hello-java
           
           ### POLICY ENFORCEMENT: Uncomment to break build on policy
           # coverity_policy_view: 'Outstanding Issues'
