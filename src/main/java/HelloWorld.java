@@ -5,4 +5,14 @@ public class HelloWorld {
         catch (Exception e) { System.out.println("Something went wrong."); }
         System.out.println("Hello World!");
     }
+    public static int badidea() {
+        int a = 1;
+        int b = 0;
+        int c = a/b;
+
+        for (int i=0; i<a; i--) {
+            System.out.println("whoops");
+        }
+        return c;
+    }
 }
