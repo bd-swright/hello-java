@@ -25,6 +25,7 @@ jobs:
       uses: blackduck-inc/black-duck-security-scan@v2
       env:
         DETECT_PROJECT_NAME: swright-${{ github.event.repository.name }}
+        DETECT_PROJECT_VERSION_NAME: 1.0-SNAPSHOT
       with:
         blackducksca_url: ${{ vars.BLACKDUCK_URL }}
         blackducksca_token: ${{ secrets.BLACKDUCK_API_TOKEN }}
