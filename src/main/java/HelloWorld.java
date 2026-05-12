@@ -4,5 +4,9 @@ public class HelloWorld {
         try { javax.crypto.spec.SecretKeySpec keyspec = new javax.crypto.spec.SecretKeySpec(secret.getBytes("UTF-8"), "AES"); }
         catch (Exception e) { System.out.println("Something went wrong."); }
         System.out.println("Hello World!");
+        while (true) {
+            System.out.println("Are we there yet?");
+            try { Thread.sleep(1000); } catch (InterruptedException e) { Thread.currentThread().interrupt(); break; }
+        }
     }
 }
