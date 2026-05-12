@@ -16,6 +16,7 @@ jobs:
       - name: Coverity Scan
         uses: blackduck-inc/black-duck-security-scan@v2
         with:
+          include_diagnostics: true
           java-version: 25
           distribution: temurin
           cache: maven
