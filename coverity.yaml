@@ -2,3 +2,9 @@ capture:
   build:
     build-command: "mvn install"
     clean-command: "mvn clean"
+analyze:
+  checkers:
+    all: true
+    webapp-security:
+      enabled: true
+    
