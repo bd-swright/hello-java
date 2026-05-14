@@ -17,6 +17,8 @@ jobs:
       #BRIDGE_COVERITY_CLEAN_COMMAND: mvn -B clean
       BRIDGE_COVERITY_CONNECT_PROJECT_NAME: swright-hello-java
       BRIDGE_COVERITY_CONNECT_STREAM_NAME: swright-hello-java
+      # defaults to High if unset
+      BRIDGE_COVERITY_PRCOMMENT_IMPACTS: 'High,Medium,Low,Audit'
       BRIDGE_COVERITY_LOCAL: true
       BRIDGE_COVERITY_INSTALL_DIRECTORY: ${{ vars.COVERITY_TOOL_HOME }}
       BRIDGE_GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -43,7 +45,7 @@ jobs:
       run: |
         curl -fLsS -o bridge.zip ${{ vars.BRIDGECLI_LINUX64 }} && unzip -qo -d ${{ runner.temp }} bridge.zip && rm -f bridge.zip
         ${{ runner.temp }}/bridge-cli-bundle-linux64/bridge-cli --stage connect \
-            coverity.automation.prcomment=true \
+            coverity.prcomment.enabled=true \
             github.repository.pull.number=${{ github.event.number }}
     - name: Save Logs
       if: always()
