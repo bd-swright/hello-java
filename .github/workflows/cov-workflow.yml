@@ -46,6 +46,23 @@ jobs:
                             
           ### Mark build status if policy violating issues are found
           # mark_build_status: 'success'
+      - name: Capture bridge inputs
+        if: always()
+        run: |
+          mkdir -p "${GITHUB_WORKSPACE}/bridge-debug"
+          # The action's temp dir has a random suffix — glob for it
+          cp -r /tmp/blackduck-security-action*/*
+      "${GITHUB_WORKSPACE}/bridge-debug/" || true
+          ls -la "${GITHUB_WORKSPACE}/bridge-debug/"
+
+      - name: Upload bridge inputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bridge-debug
+          path: ${{ github.workspace }}/bridge-debug
+          include-hidden-files: true
+
                             
       ### Uncomment below configuration to add custom logic based on return status
       # - name: cmdLine
